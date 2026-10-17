@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALDI GROUP — Digital, Tech & Creative Agency</title>
+<meta name="description" content="ALDI GROUP adalah perusahaan induk yang menaungi Aldi Tech, Aldi Creative, Aldi Digital, Novazz Studio, GitJoki.com, dan A-Comes.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ RESET & BASE ============ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f5f2ec;
+  --bg-alt:#ebe6dc;
+  --ink:#141414;
+  --ink-soft:#5a5750;
+  --line:#ddd7c9;
+  --navy:#1e3a8a;
+  --navy-dark:#0f1f52;
+  --navy-light:#93b4ff;
+  --accent:#c2562c;
+  --green:#25D366;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  font-size:16px;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+@media(max-width:640px){.wrap{padding:0 22px}}
+
+/* ============ NAV ============ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:18px 0;
+  background:rgba(245,242,236,0.85);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s, padding .3s, background .3s;
+}
+header.scrolled{
+  border-bottom-color:var(--line);
+  padding:12px 0;
+  background:rgba(245,242,236,0.95);
+}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.logo-mark{
+  width:42px;height:42px;display:grid;place-items:center;
+  background:var(--ink);color:var(--bg);
+  border-radius:10px;
+  font-family:'Inter',sans-serif;font-weight:700;
+  font-size:.95rem;letter-spacing:-0.06em;
+  position:relative;overflow:hidden;
+}
+.logo-mark::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 40%,rgba(147,180,255,.35));
+  z-index:1;pointer-events:none;
+}
+.logo-mark img{
+  width:100%;height:100%;object-fit:contain;
+  position:absolute;inset:0;
+  padding:4px;
+  z-index:2;
+}
+.logo-mark span{color:var(--navy-light);position:relative;z-index:1}
+.logo-mark strong{color:var(--bg);position:relative;z-index:1;font-weight:700}
+.logo-text{line-height:1.1}
+.logo-text b{
+  display:block;font-family:'Fraunces',serif;
+  font-weight:600;font-size:1.05rem;letter-spacing:-0.01em;
+}
+.logo-text small{
+  display:block;font-size:.62rem;letter-spacing:.22em;
+  color:var(--ink-soft);font-weight:500;margin-top:2px;
+}
+.menu{display:flex;gap:26px;list-style:none;font-size:.9rem;font-weight:500}
+.menu a{color:var(--ink-soft);transition:color .3s;position:relative;padding:4px 0}
+.menu a:hover{color:var(--ink)}
+.menu a::after{
+  content:'';position:absolute;left:0;bottom:0;
+  width:0;height:1px;background:var(--ink);
+  transition:width .3s;
+}
+.menu a:hover::after{width:100%}
+.cta-btn{
+  padding:11px 24px;border:1px solid var(--ink);border-radius:99px;
+  font-size:.85rem;font-weight:500;transition:all .3s;
+  background:transparent;color:var(--ink);white-space:nowrap;
+}
+.cta-btn:hover{background:var(--ink);color:var(--bg)}
+.burger{
+  display:none;flex-direction:column;gap:5px;
+  cursor:pointer;background:none;border:none;padding:6px;
+}
+.burger span{
+  width:24px;height:1.8px;background:var(--ink);
+  border-radius:2px;transition:.3s;
+}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+@media(max-width:1024px){
+  .menu{
+    display:flex;flex-direction:column;
+    position:fixed;top:0;right:0;bottom:0;
+    width:78%;max-width:340px;
+    background:var(--bg);
+    padding:110px 40px 40px;
+    gap:22px;
+    font-size:1.25rem;font-family:'Fraunces',serif;font-weight:500;
+    box-shadow:-20px 0 60px rgba(0,0,0,.12);
+    transform:translateX(100%);
+    transition:transform .4s cubic-bezier(.4,0,.2,1);
+    z-index:99;
+  }
+  .menu.open{transform:translateX(0)}
+  .menu a{color:var(--ink)}
+  .cta-btn{display:none}
+  .burger{display:flex;z-index:100}
+}
+
+/* ============ HERO ============ */
+.hero{padding:170px 0 90px;position:relative}
+.hero::before{
+  content:'';position:absolute;top:100px;right:-100px;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(30,58,138,.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-soft);margin-bottom:32px;font-weight:500;
+}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--ink-soft)}
+.hero h1{
+  font-family:'Fraunces',serif;font-weight:400;
+  font-size:clamp(2.6rem,7vw,5.6rem);
+  line-height:1;letter-spacing:-0.035em;
+  margin-bottom:36px;max-width:14ch;
+}
+.hero h1 em{font-style:italic;color:var(--navy);font-weight:300}
+.hero-lead{
+  font-size:clamp(1rem,1.25vw,1.18rem);
+  max-width:62ch;color:var(--ink-soft);line-height:1.75;
+}
+.hero-lead + .hero-lead{margin-top:18px}
+.hero-lead strong{color:var(--ink);font-weight:500}
+.hero-buttons{
+  margin-top:36px;display:flex;gap:12px;flex-wrap:wrap;
+}
+
+/* ============ BUTTONS ============ */
+.btn-primary,.btn-wa{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 26px;border-radius:99px;
+  font-weight:500;font-size:.9rem;
+  transition:all .3s;border:1px solid var(--ink);
+}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{
+  background:var(--navy);border-color:var(--navy);
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(30,58,138,.3);
+}
+.btn-wa{background:transparent;color:var(--ink)}
+.btn-wa:hover{
+  background:var(--green);color:#fff;border-color:var(--green);
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(37,211,102,.35);
+}
+.btn-wa svg,.btn-primary svg{width:18px;height:18px;flex-shrink:0}
+
+/* ============ SECTION ============ */
+.section{padding:100px 0;border-top:1px solid var(--line)}
+.sec-label{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-soft);margin-bottom:48px;font-weight:500;
+}
+.sec-label::before{
+  content:'';width:8px;height:8px;
+  background:var(--accent);border-radius:50%;
+}
+.sec-title{
+  font-family:'Fraunces',serif;font-weight:400;
+  font-size:clamp(1.9rem,4vw,3rem);
+  line-height:1.12;letter-spacing:-0.025em;
+  margin-bottom:24px;max-width:24ch;
+}
+.sec-desc{
+  font-size:1.05rem;color:var(--ink-soft);
+  max-width:60ch;margin-bottom:64px;line-height:1.75;
+}
+
+/* ============ STRUKTUR ============ */
+.structure{display:flex;flex-direction:column;align-items:center;margin-top:8px}
+.hold-card{
+  background:linear-gradient(135deg,#1e3a8a 0%,#0f1f52 100%);
+  color:#f5f2ec;
+  padding:48px 40px;border-radius:20px;
+  text-align:center;width:100%;max-width:520px;
+  box-shadow:0 24px 60px rgba(30,58,138,.28);
+  position:relative;overflow:hidden;
+}
+.hold-card::before{
+  content:'';position:absolute;top:-60%;right:-60%;
+  width:220%;height:220%;
+  background:radial-gradient(circle,rgba(147,180,255,.18) 0%,transparent 55%);
+  pointer-events:none;
+}
+.hold-icon{
+  width:52px;height:52px;margin:0 auto 20px;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:14px;position:relative;z-index:1;
+}
+.hold-icon svg{width:24px;height:24px;stroke:#f5f2ec;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.hold-card h3{
+  font-family:'Fraunces',serif;font-weight:600;
+  font-size:clamp(1.6rem,3vw,2rem);
+  letter-spacing:-0.01em;margin-bottom:8px;
+  position:relative;z-index:1;
+}
+.hold-card p{
+  font-size:.98rem;color:rgba(245,242,236,.72);
+  position:relative;z-index:1;
+}
+.arrow-down{
+  font-size:1.4rem;color:var(--ink-soft);
+  margin:18px 0;animation:bob 2.2s ease-in-out infinite;
+}
+@keyframes bob{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(7px)}
+}
+.sub-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:18px;width:100%;max-width:820px;
+}
+.sub-card{
+  background:var(--bg-alt);border:1px solid var(--line);
+  padding:38px 22px;border-radius:16px;text-align:center;
+  transition:all .35s cubic-bezier(.4,0,.2,1);cursor:pointer;
+}
+.sub-card:hover{
+  background:var(--ink);color:var(--bg);
+  transform:translateY(-6px);border-color:var(--ink);
+  box-shadow:0 22px 44px rgba(20,20,20,.18);
+}
+.sub-icon{
+  width:52px;height:52px;margin:0 auto 20px;
+  display:grid;place-items:center;
+  border:1px solid var(--line);border-radius:14px;
+  transition:all .35s;background:rgba(255,255,255,.4);
+}
+.sub-icon svg{
+  width:22px;height:22px;stroke:var(--ink);
+  fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;
+  transition:stroke .35s;
+}
+.sub-card:hover .sub-icon{
+  border-color:rgba(245,242,236,.3);
+  background:rgba(255,255,255,.08);
+}
+.sub-card:hover .sub-icon svg{stroke:var(--bg)}
+.sub-card h4{
+  font-family:'Fraunces',serif;font-weight:600;
+  font-size:1.22rem;margin-bottom:8px;letter-spacing:-0.01em;
+}
+.sub-desc{font-size:.88rem;color:var(--ink-soft);transition:color .35s;line-height:1.5}
+.sub-card:hover .sub-desc{color:rgba(245,242,236,.7)}
+@media(max-width:820px){
+  .sub-grid{grid-template-columns:1fr;max-width:420px}
+  .hold-card{padding:40px 28px}
+}
+
+/* ============ NAUNGAN / PARTNER ============ */
+.partner-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.partner-card{
+  background:var(--bg-alt);
+  border:1px solid var(--line);
+  border-radius:20px;padding:32px 28px 28px;
+  display:flex;flex-direction:column;
+  transition:all .35s cubic-bezier(.4,0,.2,1);
+  position:relative;overflow:hidden;
+}
+.partner-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--navy),var(--navy-light));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .5s cubic-bezier(.4,0,.2,1);
+}
+.partner-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--navy);
+  box-shadow:0 22px 48px rgba(30,58,138,.15);
+  background:var(--bg);
+}
+.partner-card:hover::before{transform:scaleX(1)}
+
+.partner-head{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:22px;padding-bottom:22px;
+  border-bottom:1px solid var(--line);
+}
+.partner-logo{
+  width:56px;height:56px;flex-shrink:0;
+  border-radius:14px;
+  display:grid;place-items:center;
+  background:var(--ink);color:var(--bg);
+  font-family:'Fraunces',serif;font-weight:600;
+  font-size:1.4rem;letter-spacing:-0.02em;
+  overflow:hidden;position:relative;
+}
+.partner-logo img{
+  width:100%;height:100%;object-fit:cover;
+  position:absolute;inset:0;
+}
+.partner-logo.novazz{background:linear-gradient(135deg,#7c3aed,#4c1d95)}
+.partner-logo.gitjoki{background:linear-gradient(135deg,#0f172a,#334155)}
+.partner-logo.acomes{background:linear-gradient(135deg,#dc2626,#7f1d1d)}
+.partner-tag{
+  font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-soft);font-weight:600;margin-bottom:3px;
+}
+.partner-name{
+  font-family:'Fraunces',serif;font-weight:600;
+  font-size:1.15rem;letter-spacing:-0.01em;line-height:1.2;
+}
+.partner-body{flex:1;display:flex;flex-direction:column}
+.partner-slogan{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:1.02rem;line-height:1.55;
+  color:var(--ink);margin-bottom:20px;font-weight:400;
+}
+.partner-meta{
+  display:flex;flex-direction:column;gap:6px;
+  margin-bottom:24px;font-size:.86rem;color:var(--ink-soft);
+}
+.partner-meta span{display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+.partner-meta strong{color:var(--ink);font-weight:500}
+.partner-meta .dot{
+  width:5px;height:5px;border-radius:50%;background:var(--accent);
+  flex-shrink:0;margin-top:8px;
+}
+.partner-actions{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
+.btn-visit{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 20px;background:var(--ink);color:var(--bg);
+  border-radius:99px;font-size:.83rem;font-weight:500;
+  transition:all .3s;border:1px solid var(--ink);
+}
+.btn-visit:hover{
+  background:var(--navy);border-color:var(--navy);
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(30,58,138,.28);
+}
+.btn-visit svg{width:14px;height:14px;transition:transform .3s}
+.btn-visit:hover svg{transform:translate(3px,-3px)}
+.partner-copyright{
+  margin-top:16px;padding-top:16px;
+  border-top:1px dashed var(--line);
+  font-size:.74rem;color:var(--ink-soft);
+  letter-spacing:.04em;
+}
+@media(max-width:900px){
+  .partner-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .partner-grid{grid-template-columns:1fr}
+  .partner-card{padding:26px 22px}
+}
+
+/* ============ INCLUDED GRID ============ */
+.included-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:16px;
+  overflow:hidden;
+}
+.included-item{
+  background:var(--bg);padding:48px 38px;
+  transition:background .35s;cursor:pointer;
+}
+.included-item:hover{background:var(--bg-alt)}
+.included-item h3{
+  font-family:'Fraunces',serif;font-weight:500;
+  font-size:1.5rem;margin-bottom:14px;letter-spacing:-0.01em;
+}
+.included-item p{color:var(--ink-soft);font-size:.98rem;line-height:1.7}
+@media(max-width:768px){
+  .included-grid{grid-template-columns:1fr}
+  .included-item{padding:34px 26px}
+}
+
+/* ============ APPROACH ============ */
+.approach-text{
+  font-family:'Fraunces',serif;
+  font-size:clamp(1.35rem,2.6vw,2rem);
+  font-weight:300;line-height:1.5;letter-spacing:-0.01em;
+  max-width:36ch;
+}
+.approach-text strong{
+  font-weight:500;
+  background:linear-gradient(transparent 62%, rgba(194,86,44,.28) 62%);
+  padding:0 2px;
+}
+@media(max-width:768px){.approach-text{max-width:100%}}
+
+/* ============ FAQ ============ */
+.faq{max-width:820px}
+.faq-item{border-top:1px solid var(--line);padding:30px 0;cursor:pointer}
+.faq-item:last-child{border-bottom:1px solid var(--line)}
+.faq-q{
+  display:flex;justify-content:space-between;align-items:center;gap:30px;
+  font-family:'Fraunces',serif;font-weight:500;
+  font-size:clamp(1.1rem,1.9vw,1.4rem);
+  letter-spacing:-0.01em;transition:color .3s;line-height:1.35;
+}
+.faq-item:hover .faq-q{color:var(--accent)}
+.faq-icon{width:24px;height:24px;position:relative;flex-shrink:0}
+.faq-icon::before,.faq-icon::after{
+  content:'';position:absolute;top:50%;left:50%;
+  background:var(--ink);transition:transform .35s,opacity .35s;
+  border-radius:2px;
+}
+.faq-icon::before{width:14px;height:1.5px;transform:translate(-50%,-50%)}
+.faq-icon::after{width:1.5px;height:14px;transform:translate(-50%,-50%)}
+.faq-item.open .faq-icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .5s ease, margin .3s;
+  color:var(--ink-soft);font-size:1rem;line-height:1.75;
+  padding-right:50px;
+}
+.faq-item.open .faq-a{max-height:320px;margin-top:18px}
+
+/* ============ CONTACT ============ */
+.contact-block{
+  padding:120px 0;background:var(--ink);color:var(--bg);
+  border-top:1px solid var(--line);
+  position:relative;overflow:hidden;
+}
+.contact-block::before{
+  content:'';position:absolute;top:-40%;right:-20%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(30,58,138,.35) 0%,transparent 65%);
+  pointer-events:none;
+}
+.contact-block .wrap{position:relative;z-index:1}
+.contact-block .sec-label{color:rgba(245,242,236,.6)}
+.contact-block .sec-label::before{background:var(--navy-light)}
+.contact-title{
+  font-family:'Fraunces',serif;font-weight:400;
+  font-size:clamp(2rem,4.8vw,3.6rem);
+  line-height:1.08;letter-spacing:-0.03em;
+  margin-bottom:24px;max-width:22ch;
+}
+.contact-title em{font-style:italic;color:var(--navy-light);font-weight:300}
+.contact-sub{
+  display:flex;flex-wrap:wrap;gap:10px 20px;
+  font-size:.98rem;color:rgba(245,242,236,.6);
+  margin-bottom:56px;
+}
+.contact-sub a{
+  color:rgba(245,242,236,.95);
+  border-bottom:1px solid rgba(245,242,236,.3);
+  transition:color .3s,border-color .3s;
+  padding-bottom:1px;
+}
+.contact-sub a:hover{
+  color:var(--navy-light);
+  border-bottom-color:var(--navy-light);
+}
+.contact-sub .sep{color:rgba(245,242,236,.25)}
+@media(max-width:640px){.contact-sub .sep{display:none}}
+
+.contact-form{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:24px 32px;max-width:800px;
+}
+.contact-form .full{grid-column:1/-1}
+.contact-form input,
+.contact-form textarea{
+  width:100%;padding:16px 0;
+  background:transparent;border:none;
+  border-bottom:1px solid rgba(245,242,236,.25);
+  color:var(--bg);font-family:inherit;font-size:1rem;
+  transition:border-color .3s;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{color:rgba(245,242,236,.4)}
+.contact-form input:focus,
+.contact-form textarea:focus{outline:none;border-bottom-color:var(--navy-light)}
+.contact-form textarea{resize:vertical;min-height:100px}
+.contact-form button{
+  grid-column:1/-1;justify-self:start;
+  padding:16px 42px;margin-top:16px;
+  background:var(--bg);color:var(--ink);
+  border:none;border-radius:99px;
+  font-family:inherit;font-weight:500;font-size:.95rem;
+  cursor:pointer;transition:all .3s;
+}
+.contact-form button:hover:not(:disabled){
+  background:var(--navy-light);color:var(--ink);
+  transform:translateY(-2px);
+  box-shadow:0 14px 30px rgba(147,180,255,.3);
+}
+.contact-form button:disabled{opacity:.6;cursor:not-allowed}
+@media(max-width:640px){.contact-form{grid-template-columns:1fr}}
+
+/* ============ FOOTER ============ */
+footer{padding:70px 0 40px;border-top:1px solid var(--line)}
+.footer-grid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:40px;margin-bottom:56px;
+}
+.footer-brand{max-width:300px}
+.footer-brand .logo{margin-bottom:18px}
+.footer-brand p{font-size:.9rem;color:var(--ink-soft);line-height:1.7}
+.footer-col h4{
+  font-size:.72rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-soft);
+  margin-bottom:18px;font-weight:500;
+}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:.92rem;color:var(--ink);transition:color .3s}
+.footer-col a:hover{color:var(--navy)}
+.footer-col li{font-size:.92rem;color:var(--ink)}
+.footer-bottom{
+  display:flex;justify-content:space-between;
+  font-size:.8rem;color:var(--ink-soft);
+  padding-top:28px;border-top:1px solid var(--line);
+  flex-wrap:wrap;gap:14px;
+}
+@media(max-width:820px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .footer-brand{grid-column:1/-1;max-width:100%}
+}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ============ TOAST ============ */
+.toast{
+  position:fixed;bottom:28px;left:50%;
+  transform:translateX(-50%) translateY(120px);
+  background:var(--ink);color:var(--bg);
+  padding:16px 28px;border-radius:99px;
+  font-size:.9rem;font-weight:500;
+  box-shadow:0 18px 40px rgba(0,0,0,.28);
+  transition:transform .45s cubic-bezier(.4,0,.2,1);
+  z-index:1000;display:flex;align-items:center;gap:12px;
+  max-width:calc(100% - 40px);
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast::before{
+  content:'';width:8px;height:8px;border-radius:50%;
+  background:#4ade80;flex-shrink:0;
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#" class="logo">
+      <span class="logo-mark">
+        <img src="logo1.com" alt="ALDI GROUP" onerror="this.style.display='none';this.parentNode.innerHTML='&lt;strong&gt;A&lt;/strong&gt;&lt;span&gt;G&lt;/span&gt;'">
+      </span>
+      <span class="logo-text">
+        <b>ALDI GROUP</b>
+        <small>TECH · CREATIVE · DIGITAL</small>
+      </span>
+    </a>
+
+    <ul class="menu" id="menu">
+      <li><a href="#struktur">Struktur</a></li>
+      <li><a href="#naungan">Naungan</a></li>
+      <li><a href="#layanan">Layanan</a></li>
+      <li><a href="#pendekatan">Pendekatan</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Kontak</a></li>
+    </ul>
+
+    <a href="#contact" class="cta-btn">Mulai Proyek</a>
+
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow reveal">Digital & Web Agency — Jawa Timur, Indonesia</div>
+    <h1 class="reveal">Digital <em>&</em> Web.</h1>
+    <p class="hero-lead reveal">
+      <strong>ALDI GROUP</strong> adalah perusahaan induk yang menaungi berbagai bisnis di
+      bidang teknologi, desain, digital marketing, dan lainnya. Kami merancang dan
+      membangun website serta produk digital yang <strong>perform</strong>: cepat,
+      accessible, dan konsisten dengan brand — dari pixel pertama hingga interaksi terakhir.
+    </p>
+    <p class="hero-lead reveal">
+      Website Anda adalah tempat brand akhirnya harus bekerja untuk orang nyata dengan
+      tujuan nyata. Kami mendesain pengalamannya, membangunnya dengan benar, dan
+      menyetelnya berdasarkan angka.
+    </p>
+
+    <div class="hero-buttons reveal">
+      <a href="#contact" class="btn-primary">
+        Mulai Proyek
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="https://wa.me/6285731569186?text=Halo%20ALDI%20GROUP%2C%20saya%20ingin%20konsultasi."
+         target="_blank" rel="noopener" class="btn-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7 0c-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2s0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5s0-.4 0-.5c-.1-.1-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.8.6.8.3 1.5.2 2 .1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.1-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 4.9L2 22l5.2-1.3c1.4.8 3.1 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C3.9 14.8 3.5 13.4 3.5 12 3.5 7.3 7.3 3.5 12 3.5S20.5 7.3 20.5 12 16.7 20 12 20z"/></svg>
+        Chat WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STRUKTUR ================= -->
+<section class="section" id="struktur">
+  <div class="wrap">
+    <div class="sec-label reveal">01 — Struktur Perusahaan</div>
+    <h2 class="sec-title reveal">Satu grup, banyak keahlian.</h2>
+    <p class="sec-desc reveal">ALDI GROUP menaungi tiga unit bisnis inti di bidang teknologi, kreatif, dan digital.</p>
+
+    <div class="structure">
+      <div class="hold-card reveal">
+        <div class="hold-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg>
+        </div>
+        <h3>ALDI GROUP</h3>
+        <p>Perusahaan utama / induk usaha</p>
+      </div>
+
+      <div class="arrow-down reveal">↓</div>
+
+      <div class="sub-grid">
+        <div class="sub-card reveal">
+          <div class="sub-icon">
+            <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M3 16v3a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 12h8"/></svg>
+          </div>
+          <h4>Aldi Tech</h4>
+          <p class="sub-desc">Website, aplikasi, IT</p>
+        </div>
+        <div class="sub-card reveal">
+          <div class="sub-icon">
+            <svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="13" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="10" cy="19" r="2.5"/></svg>
+          </div>
+          <h4>Aldi Creative</h4>
+          <p class="sub-desc">Logo, branding, desain</p>
+        </div>
+        <div class="sub-card reveal">
+          <div class="sub-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-4 4 4 5-5"/></svg>
+          </div>
+          <h4>Aldi Digital</h4>
+          <p class="sub-desc">Marketing, ads, SEO</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NAUNGAN ================= -->
+<section class="section" id="naungan">
+  <div class="wrap">
+    <div class="sec-label reveal">02 — Naungan ALDI GROUP</div>
+    <h2 class="sec-title reveal">Bisnis yang kami naungi.</h2>
+    <p class="sec-desc reveal">
+      Selain unit internal, ALDI GROUP juga menaungi brand & komunitas independen
+      yang bergerak di bidang seni, jasa digital, dan layanan top-up.
+    </p>
+
+    <div class="partner-grid">
+
+      <!-- ========== NOVAZZ STUDIO ========== -->
+      <article class="partner-card reveal">
+        <div class="partner-head">
+          <div class="partner-logo novazz" aria-hidden="true">
+            <img src="logo-novazz.jpg" alt="Novazz Studio" onerror="this.style.display='none';this.parentNode.textContent='N'">
+          </div>
+          <div>
+            <div class="partner-tag">Studio Seni & Kolaborasi</div>
+            <div class="partner-name">Novazz Studio</div>
+          </div>
+        </div>
+
+        <div class="partner-body">
+          <p class="partner-slogan">"Serangkaian Seni dan Kolaborasi"</p>
+
+          <div class="partner-meta">
+            <span><span class="dot"></span><span>Novazz Novel</span></span>
+            <span><span class="dot"></span><span><strong>Director:</strong> Azzam Nabil</span></span>
+            <span><span class="dot"></span><span>Mojokerto, Jawa Timur</span></span>
+          </div>
+
+          <div class="partner-actions">
+            <a href="https://share.google/gh35k91vjyeWTZiAb"
+               target="_blank" rel="noopener noreferrer"
+               class="btn-visit">
+              Kunjungi
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+
+          <div class="partner-copyright">© Copyright 2026 — Novazz Studio</div>
+        </div>
+      </article>
+
+      <!-- ========== GITJOKI.COM ========== -->
+      <article class="partner-card reveal">
+        <div class="partner-head">
+          <div class="partner-logo gitjoki" aria-hidden="true">
+            <img src="logo-gitjoki.jpg" alt="GitJoki.com" onerror="this.style.display='none';this.parentNode.textContent='G'">
+          </div>
+          <div>
+            <div class="partner-tag">Jasa Digital & Komunitas</div>
+            <div class="partner-name">GitJoki.com</div>
+          </div>
+        </div>
+
+        <div class="partner-body">
+          <p class="partner-slogan">"Permudah pekerjaanmu dengan jasa kami."</p>
+
+          <div class="partner-meta">
+            <span><span class="dot"></span><span>GitJoki All</span></span>
+            <span><span class="dot"></span><span><strong>Founder:</strong> Team Utama</span></span>
+            <span><span class="dot"></span><span>Jawa Timur — Naungan Tim Joki Database Community</span></span>
+          </div>
+
+          <div class="partner-actions">
+            <a href="https://my-id1.github.io/GitJoki.com"
+               target="_blank" rel="noopener noreferrer"
+               class="btn-visit">
+              Kunjungi
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+
+          <div class="partner-copyright">© Copyright 2026 — GitJoki.com</div>
+        </div>
+      </article>
+
+      <!-- ========== A-COMES ========== -->
+      <article class="partner-card reveal">
+        <div class="partner-head">
+          <div class="partner-logo acom es" aria-hidden="true">
+            <img src="logo-acomes.jpg" alt="A-Comes" onerror="this.style.display='none';this.parentNode.textContent='A'">
+          </div>
+          <div>
+            <div class="partner-tag">Top Up & Layanan Digital</div>
+            <div class="partner-name">A-Comes</div>
+          </div>
+        </div>
+
+        <div class="partner-body">
+          <p class="partner-slogan">"Harga murah harga kami — kunjungi top up kami."</p>
+
+          <div class="partner-meta">
+            <span><span class="dot"></span><span>Acomers</span></span>
+            <span><span class="dot"></span><span><strong>Direktur Utama:</strong> Tim bls.com</span></span>
+            <span><span class="dot"></span><span>Jawa Timur</span></span>
+          </div>
+
+          <div class="partner-actions">
+            <a href="https://my-id1.github.io/a-comes.com"
+               target="_blank" rel="noopener noreferrer"
+               class="btn-visit">
+              Kunjungi
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+
+          <div class="partner-copyright">© Copyright 2026 — A-Comes</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= LAYANAN ================= -->
+<section class="section" id="layanan">
+  <div class="wrap">
+    <div class="sec-label reveal">03 — What's Included</div>
+    <h2 class="sec-title reveal">Empat pilar yang membuat website Anda bekerja.</h2>
+
+    <div class="included-grid reveal">
+      <div class="included-item">
+        <h3>Web Experience</h3>
+        <p>Design dan konten untuk situs yang terasa sepadan dengan brand di belakangnya.</p>
+      </div>
+      <div class="included-item">
+        <h3>UX & Product</h3>
+        <p>User flow dan desain interface untuk produk digital yang mudah digunakan.</p>
+      </div>
+      <div class="included-item">
+        <h3>Build & Launch</h3>
+        <p>Front-end build yang cepat dan accessible, dirilis dan didukung penuh sampai live.</p>
+      </div>
+      <div class="included-item">
+        <h3>Analytics & CRO</h3>
+        <p>Pengukuran dan optimasi konversi, agar situs terus membaik seiring waktu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PENDEKATAN ================= -->
+<section class="section" id="pendekatan">
+  <div class="wrap">
+    <div class="sec-label reveal">04 — How We Approach It</div>
+    <p class="approach-text reveal">
+      Kami <strong>Mendengar</strong> user dan tujuan Anda, <strong>Membingkai</strong>
+      pengalaman dan strukturnya, lalu <strong>Membuatnya</strong>: desain dan build yang
+      cepat serta accessible. Lalu kami <strong>Bergerak</strong> dengan analytics dan
+      conversion work, agar situs semakin tajam dari waktu ke waktu.
+    </p>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="sec-label reveal">05 — Common Questions</div>
+    <div class="faq">
+      <div class="faq-item reveal">
+        <div class="faq-q">Apakah ALDI GROUP menangani design sekaligus build website? <span class="faq-icon"></span></div>
+        <div class="faq-a">Ya. Kami menangani experience design, front-end build, dan launch, sekaligus analytics dan optimasi pasca go-live.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Siapa saja yang berada di bawah naungan ALDI GROUP? <span class="faq-icon"></span></div>
+        <div class="faq-a">Unit internal: Aldi Tech, Aldi Creative, Aldi Digital. Mitra naungan: Novazz Studio, GitJoki.com, dan A-Comes.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Apakah website dibangun untuk performance dan SEO? <span class="faq-icon"></span></div>
+        <div class="faq-a">Ya. Kami membangun untuk kecepatan, accessibility, dan struktur yang bersih — fondasi yang dihargai search engine sekaligus oleh pengguna.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Bisakah bekerja dari brand yang sudah ada? <span class="faq-icon"></span></div>
+        <div class="faq-a">Tentu. Kami bisa meneruskan identitas yang sudah ada ke web, atau memadukannya dengan pekerjaan brand & identity dari Aldi Creative.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact-block" id="contact">
+  <div class="wrap">
+    <div class="sec-label reveal">06 — Let's Talk</div>
+    <h2 class="contact-title reveal">
+      Mari kita bawa <em>ALDI GROUP</em> bekerja untuk brand Anda.
+    </h2>
+
+    <div class="contact-sub reveal">
+      <a href="mailto:afiransyah63@gmail.com">afiransyah63@gmail.com</a>
+      <span class="sep">·</span>
+      <a href="tel:+6285731569186">+62 857-3156-9186</a>
+      <span class="sep">·</span>
+      <span>Jawa Timur, Indonesia</span>
+    </div>
+
+    <form class="contact-form reveal" id="contactForm" novalidate>
+      <input type="text" id="name" name="name" placeholder="Nama" required autocomplete="name">
+      <input type="email" id="email" name="email" placeholder="Email" required autocomplete="email">
+      <input type="text" id="company" name="company" placeholder="Perusahaan / Brand" class="full" autocomplete="organization">
+      <textarea id="message" name="message" placeholder="Ceritakan tentang proyek Anda..." class="full" required></textarea>
+      <button type="submit">Kirim Pesan →</button>
+    </form>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-mark">
+            <img src="logo1.com" alt="ALDI GROUP" onerror="this.style.display='none';this.parentNode.innerHTML='&lt;strong&gt;A&lt;/strong&gt;&lt;span&gt;G&lt;/span&gt;'">
+          </span>
+          <span class="logo-text">
+            <b>ALDI GROUP</b>
+            <small>TECH · CREATIVE · DIGITAL</small>
+          </span>
+        </a>
+        <p>Perusahaan induk yang menaungi bisnis teknologi, desain, dan digital marketing di Jawa Timur, Indonesia.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Anak Perusahaan</h4>
+        <ul>
+          <li><a href="#">Aldi Tech</a></li>
+          <li><a href="#">Aldi Creative</a></li>
+          <li><a href="#">Aldi Digital</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Naungan</h4>
+        <ul>
+          <li><a href="https://share.google/gh35k91vjyeWTZiAb" target="_blank" rel="noopener">Novazz Studio</a></li>
+          <li><a href="https://my-id1.github.io/GitJoki.com" target="_blank" rel="noopener">GitJoki.com</a></li>
+          <li><a href="https://my-id1.github.io/a-comes.com" target="_blank" rel="noopener">A-Comes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontak</h4>
+        <ul>
+          <li><a href="mailto:afiransyah63@gmail.com">afiransyah63@gmail.com</a></li>
+          <li><a href="tel:+6285731569186">+62 857-3156-9186</a></li>
+          <li>Jawa Timur, Indonesia</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ALDI GROUP. All rights reserved.</span>
+      <span>Privacy · Terms</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= TOAST ================= -->
+<div class="toast" id="toast">Pesan Anda berhasil dikirim</div>
+
+<script>
+/* ============ HEADER SCROLL ============ */
+const header = document.getElementById('header');
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+window.addEventListener('scroll', onScroll, { passive:true });
+onScroll();
+
+/* ============ MOBILE MENU ============ */
+const burger = document.getElementById('burger');
+const menu = document.getElementById('menu');
+burger.addEventListener('click', () => {
+  const open = menu.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  menu.classList.remove('open');
+  burger.classList.remove('open');
+  document.body.style.overflow = '';
+}));
+
+/* ============ REVEAL ON SCROLL ============ */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ============ FAQ ACCORDION ============ */
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+/* ============ TOAST ============ */
+const toast = document.getElementById('toast');
+let toastTimer;
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+}
+
+/* ============ CONTACT FORM ============ */
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const name    = form.name.value.trim();
+  const email   = form.email.value.trim();
+  const company = form.company.value.trim();
+  const message = form.message.value.trim();
+
+  if (!name || !email || !message) {
+    showToast('Mohon lengkapi nama, email, dan pesan.');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showToast('Format email tidak valid.');
+    return;
+  }
+
+  try {
+    const data = JSON.parse(localStorage.getItem('ag_messages') || '[]');
+    data.push({ name, email, company, message, ts: new Date().toISOString() });
+    localStorage.setItem('ag_messages', JSON.stringify(data));
+  } catch (_) {}
+
+  const subject = encodeURIComponent(`[Website] Pesan dari ${name}`);
+  const body = encodeURIComponent(
+    `Nama       : ${name}\n` +
+    `Email      : ${email}\n` +
+    `Perusahaan : ${company || '-'}\n\n` +
+    `Pesan:\n${message}`
+  );
+  window.location.href = `mailto:afiransyah63@gmail.com?subject=${subject}&body=${body}`;
+
+  showToast(`Terima kasih ${name}! Pesan Anda siap dikirim.`);
+  form.reset();
+});
+
+/* ============ CONSOLE BRANDING ============ */
+console.log('%cALDI GROUP', 'color:#1e3a8a;font:700 20px Inter,sans-serif;letter-spacing:-0.5px');
+console.log('%cDigital · Tech · Creative', 'color:#c2562c;font:500 12px Inter,sans-serif');
+console.log('%cNaungan: Novazz Studio · GitJoki.com · A-Comes', 'color:#5a5750;font:500 12px Inter,sans-serif');
+console.log('%cKontak: afiransyah63@gmail.com · +62 857-3156-9186 · Jawa Timur', 'color:#5a5750;font:500 12px Inter,sans-serif');
+</script>
+</body>
+  </html>
