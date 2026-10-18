@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALDI GROUP — Kunjungi Bisnis Kami</title>
+<meta name="description" content="Kunjungi bisnis kami di companycom.github.io/lobby.com. Semua pembayaran transfer melalui scan DANA.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f5f2ec;
+  --ink:#141414;
+  --ink-soft:#5a5750;
+  --line:#ddd7c9;
+  --navy:#1e3a8a;
+  --navy-light:#93b4ff;
+  --accent:#c2562c;
+  --dana:#118eea;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px;
+  font-size:16px;
+}
+.card{
+  width:100%;
+  max-width:560px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:56px 44px;
+  text-align:center;
+  box-shadow:0 24px 60px rgba(20,20,20,.08);
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:'';
+  position:absolute;
+  top:-40%;right:-40%;
+  width:160%;height:160%;
+  background:radial-gradient(circle,rgba(30,58,138,.07) 0%,transparent 60%);
+  pointer-events:none;
+}
+.card > *{position:relative;z-index:1}
+
+.logo-mark{
+  width:56px;height:56px;
+  margin:0 auto 24px;
+  display:grid;place-items:center;
+  background:var(--ink);color:var(--bg);
+  border-radius:14px;
+  font-weight:700;font-size:1.15rem;letter-spacing:-0.06em;
+  position:relative;overflow:hidden;
+}
+.logo-mark::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 40%,rgba(147,180,255,.35));
+  pointer-events:none;
+}
+.logo-mark span{color:var(--navy-light);position:relative;z-index:1}
+.logo-mark strong{color:var(--bg);position:relative;z-index:1}
+
+h1{
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:clamp(1.6rem,4vw,2.1rem);
+  letter-spacing:-0.02em;
+  line-height:1.2;
+  margin-bottom:14px;
+}
+p.lead{
+  font-size:1rem;
+  color:var(--ink-soft);
+  line-height:1.7;
+  margin-bottom:36px;
+  max-width:38ch;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.btn-visit{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:16px 34px;
+  background:var(--ink);
+  color:var(--bg);
+  border-radius:99px;
+  font-weight:500;
+  font-size:.95rem;
+  transition:all .3s;
+  border:1px solid var(--ink);
+  text-decoration:none;
+}
+.btn-visit:hover{
+  background:var(--navy);
+  border-color:var(--navy);
+  transform:translateY(-3px);
+  box-shadow:0 16px 34px rgba(30,58,138,.3);
+}
+.btn-visit svg{
+  width:16px;height:16px;
+  transition:transform .3s;
+}
+.btn-visit:hover svg{transform:translate(3px,-3px)}
+
+.note{
+  margin-top:40px;
+  padding-top:28px;
+  border-top:1px solid var(--line);
+  font-size:.9rem;
+  color:var(--ink-soft);
+  line-height:1.7;
+}
+.note strong{
+  color:var(--ink);
+  font-weight:600;
+}
+.note .highlight{
+  display:inline-block;
+  margin-top:10px;
+  padding:7px 16px;
+  background:rgba(17,142,234,.1);
+  color:var(--dana);
+  border:1px solid rgba(17,142,234,.3);
+  border-radius:99px;
+  font-weight:600;
+  font-size:.85rem;
+  letter-spacing:.04em;
+}
+
+@media(max-width:480px){
+  body{padding:18px}
+  .card{padding:40px 26px;border-radius:18px}
+  .btn-visit{width:100%;justify-content:center;padding:15px 24px}
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo-mark" aria-hidden="true"><strong>A</strong><span>G</span></div>
+
+  <h1>ALDI GROUP</h1>
+  <p class="lead">Kunjungi bisnis dan layanan kami melalui tombol di bawah ini.</p>
+
+  <a href="https://companycom.github.io/lobby.com" target="_blank" rel="noopener noreferrer" class="btn-visit">
+    Kunjungi Bisnis Kami
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+  </a>
+
+  <div class="note">
+    <strong>Informasi Pembayaran</strong><br>
+    Semua pembayaran dilakukan melalui transfer dengan scan DANA.
+    <br>
+    <span class="highlight">DANA · Scan &amp; Transfer</span>
+  </div>
+</div>
+
+</body>
+</html>
