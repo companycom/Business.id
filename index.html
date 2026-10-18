@@ -230,6 +230,34 @@
   .btn-visit svg{width:16px;height:16px;transition:transform .3s}
   .btn-visit:hover svg{transform:translate(3px,-3px)}
 
+  /* ===== TOMBOL Jual / Barang ===== */
+  .btn-shop{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:15px 32px;
+    background:var(--accent);
+    color:#fff;
+    border-radius:99px;
+    font-weight:600;
+    font-size:.95rem;
+    transition:all .3s;
+    border:1px solid var(--accent);
+    text-decoration:none;
+    width:100%;
+    max-width:320px;
+    box-shadow:0 8px 20px rgba(194,86,44,.25);
+  }
+  .btn-shop:hover{
+    background:#a8471f;
+    border-color:#a8471f;
+    transform:translateY(-3px);
+    box-shadow:0 16px 30px rgba(194,86,44,.4);
+  }
+  .btn-shop svg{width:18px;height:18px;transition:transform .3s}
+  .btn-shop:hover svg{transform:scale(1.1)}
+
   .btn-event{
     display:inline-flex;
     align-items:center;
@@ -427,7 +455,7 @@
     .navbar{padding:12px 16px}
     .nav-links{display:none}
     .card{padding:36px 24px;border-radius:18px}
-    .btn-visit,.btn-event{max-width:100%;padding:14px 24px;font-size:.9rem}
+    .btn-visit,.btn-shop,.btn-event{max-width:100%;padding:14px 24px;font-size:.9rem}
     .modal-box{padding:28px 20px}
   }
 </style>
@@ -464,13 +492,24 @@
     <div class="logo-mark" aria-hidden="true"><strong>A</strong><span>G</span></div>
 
     <h1>ALDI GROUP</h1>
-    <p class="lead">Kunjungi bisnis dan layanan kami, atau lihat event terbaru yang sedang berlangsung.</p>
+    <p class="lead">Kunjungi bisnis dan layanan kami, jual/beli barang, atau lihat event terbaru yang sedang berlangsung.</p>
 
     <div class="btn-group">
       <!-- Tombol kunjungi bisnis -->
       <a href="https://companycom.github.io/lobby.com" target="_blank" rel="noopener noreferrer" class="btn-visit">
         Kunjungi Bisnis Kami
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      </a>
+
+      <!-- ===== TOMBOL Jual / Barang (URL diperbaiki) ===== -->
+      <a href="https://companycom.github.io/storeme.com" target="_blank" rel="noopener noreferrer" class="btn-shop">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+          <path d="M3 6h18"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        Jual / Barang
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
       </a>
 
       <!-- Tombol Lihat Event -->
@@ -539,40 +578,29 @@
 
   <script>
     /* ============================================================
-       STORAGE LAYER — aman terhadap localStorage diblokir/penuh
+       STORAGE LAYER
        ============================================================ */
     const STORAGE_USERS = 'aldiUsers';
     const STORAGE_SESSION = 'aldiCurrentUser';
 
-    // Fallback in-memory jika localStorage tidak tersedia (mis. private mode ketat)
     const memoryStore = {};
     const storage = {
       get(key) {
-        try {
-          return localStorage.getItem(key);
-        } catch (e) {
-          return memoryStore[key] ?? null;
-        }
+        try { return localStorage.getItem(key); }
+        catch (e) { return memoryStore[key] ?? null; }
       },
       set(key, value) {
-        try {
-          localStorage.setItem(key, value);
-        } catch (e) {
-          memoryStore[key] = value;
-        }
+        try { localStorage.setItem(key, value); }
+        catch (e) { memoryStore[key] = value; }
       },
       remove(key) {
-        try {
-          localStorage.removeItem(key);
-        } catch (e) {
-          delete memoryStore[key];
-        }
+        try { localStorage.removeItem(key); }
+        catch (e) { delete memoryStore[key]; }
       }
     };
 
     /* ============================================================
-       HASHING PASSWORD — SHA-256 + salt tetap per aplikasi
-       Catatan: untuk produksi sungguhan gunakan backend + bcrypt/argon2.
+       HASHING PASSWORD
        ============================================================ */
     const APP_SALT = 'aldi-group-v1';
 
@@ -588,45 +616,29 @@
        UTIL
        ============================================================ */
     function readUsers() {
-      try {
-        return JSON.parse(storage.get(STORAGE_USERS)) || [];
-      } catch (e) {
-        return [];
-      }
+      try { return JSON.parse(storage.get(STORAGE_USERS)) || []; }
+      catch (e) { return []; }
     }
-    function writeUsers(users) {
-      storage.set(STORAGE_USERS, JSON.stringify(users));
-    }
+    function writeUsers(users) { storage.set(STORAGE_USERS, JSON.stringify(users)); }
     function readSession() {
-      try {
-        return JSON.parse(storage.get(STORAGE_SESSION));
-      } catch (e) {
-        return null;
-      }
+      try { return JSON.parse(storage.get(STORAGE_SESSION)); }
+      catch (e) { return null; }
     }
-    function writeSession(user) {
-      storage.set(STORAGE_SESSION, JSON.stringify(user));
-    }
-    function clearSession() {
-      storage.remove(STORAGE_SESSION);
-    }
+    function writeSession(user) { storage.set(STORAGE_SESSION, JSON.stringify(user)); }
+    function clearSession() { storage.remove(STORAGE_SESSION); }
 
     /* ============================================================
        MIGRASI DATA LAMA
-       Data lama menyimpan password plaintext. Kita konversi ke hash
-       agar tetap bisa login & lebih aman.
        ============================================================ */
     async function migrateLegacyUsers() {
       const users = readUsers();
       let changed = false;
       for (const u of users) {
-        // Tandai user lama yang belum punya field passwordHash
         if (!u.passwordHash && typeof u.password === 'string') {
           u.passwordHash = await hashPassword(u.password);
           delete u.password;
           changed = true;
         }
-        // Pastikan ada createdAt
         if (!u.createdAt) {
           u.createdAt = new Date().toISOString();
           changed = true;
@@ -644,13 +656,11 @@
       authModal.classList.add('active');
       switchTab(mode);
     }
-
     function closeModal() {
       authModal.classList.remove('active');
       document.getElementById('loginMessage').className = 'form-message';
       document.getElementById('registerMessage').className = 'form-message';
     }
-
     authModal.addEventListener('click', (e) => {
       if (e.target === authModal) closeModal();
     });
@@ -685,7 +695,6 @@
       const msg = document.getElementById('registerMessage');
       const btn = document.getElementById('registerBtn');
 
-      // Pastikan data lama sudah dimigrasi sebelum cek duplikat
       await migrateLegacyUsers();
 
       const users = readUsers();
@@ -698,12 +707,7 @@
       btn.disabled = true;
       try {
         const passwordHash = await hashPassword(password);
-        users.push({
-          name,
-          email,
-          passwordHash,
-          createdAt: new Date().toISOString()
-        });
+        users.push({ name, email, passwordHash, createdAt: new Date().toISOString() });
         writeUsers(users);
 
         msg.className = 'form-message success';
@@ -748,7 +752,6 @@
           return;
         }
 
-        // Simpan sesi (tanpa password/hash)
         const sessionUser = {
           name: user.name,
           email: user.email,
@@ -812,7 +815,6 @@
       updateUI();
     });
 
-    // Sinkronkan antar-tab: kalau user login/logout di tab lain
     window.addEventListener('storage', (e) => {
       if (e.key === STORAGE_SESSION) updateUI();
     });
