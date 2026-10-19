@@ -24,6 +24,11 @@
     --ai-light:#ede9fe;
     --pasar:#0891b2;
     --pasar-dark:#0e7490;
+    --edu:#0f766e;
+    --edu-dark:#115e59;
+    /* warna baru untuk tombol donasi */
+    --donasi:#d97706;
+    --donasi-dark:#b45309;
   }
   html{scroll-behavior:smooth}
   body{
@@ -262,7 +267,6 @@
   .btn-shop svg{width:18px;height:18px;transition:transform .3s}
   .btn-shop:hover svg{transform:scale(1.1)}
 
-  /* ===== TOMBOL BARU: Toko Pasar Online ===== */
   .btn-pasar{
     display:inline-flex;
     align-items:center;
@@ -289,6 +293,77 @@
   }
   .btn-pasar svg{width:18px;height:18px;transition:transform .3s}
   .btn-pasar:hover svg{transform:scale(1.1)}
+
+  .btn-edu{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:15px 32px;
+    background:var(--edu);
+    color:#fff;
+    border-radius:99px;
+    font-weight:600;
+    font-size:.95rem;
+    transition:all .3s;
+    border:1px solid var(--edu);
+    text-decoration:none;
+    width:100%;
+    max-width:320px;
+    box-shadow:0 8px 20px rgba(15,118,110,.25);
+  }
+  .btn-edu:hover{
+    background:var(--edu-dark);
+    border-color:var(--edu-dark);
+    transform:translateY(-3px);
+    box-shadow:0 16px 30px rgba(15,118,110,.4);
+  }
+  .btn-edu svg{width:18px;height:18px;transition:transform .3s}
+  .btn-edu:hover svg{transform:scale(1.1)}
+
+  /* ===== TOMBOL BARU: Donasi ===== */
+  .btn-donasi{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:15px 32px;
+    background:var(--donasi);
+    color:#fff;
+    border-radius:99px;
+    font-weight:600;
+    font-size:.95rem;
+    transition:all .3s;
+    border:1px solid var(--donasi);
+    text-decoration:none;
+    width:100%;
+    max-width:320px;
+    box-shadow:0 8px 20px rgba(217,119,6,.3);
+    position:relative;
+    overflow:hidden;
+  }
+  .btn-donasi::before{
+    content:'';
+    position:absolute;
+    top:0;left:-100%;
+    width:100%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);
+    animation:shimmer 2.5s infinite;
+  }
+  @keyframes shimmer{
+    0%{left:-100%}
+    60%{left:100%}
+    100%{left:100%}
+  }
+  .btn-donasi:hover{
+    background:var(--donasi-dark);
+    border-color:var(--donasi-dark);
+    transform:translateY(-3px);
+    box-shadow:0 16px 30px rgba(217,119,6,.45);
+  }
+  .btn-donasi svg{width:18px;height:18px;transition:transform .3s;position:relative;z-index:1}
+  .btn-donasi:hover svg{transform:scale(1.15) rotate(-8deg)}
+  .btn-donasi span{position:relative;z-index:1}
 
   .btn-event{
     display:inline-flex;
@@ -843,7 +918,7 @@
     .navbar{padding:12px 16px}
     .nav-links{display:none}
     .card{padding:36px 24px;border-radius:18px}
-    .btn-visit,.btn-shop,.btn-pasar,.btn-event{max-width:100%;padding:14px 24px;font-size:.9rem}
+    .btn-visit,.btn-shop,.btn-pasar,.btn-edu,.btn-donasi,.btn-event{max-width:100%;padding:14px 24px;font-size:.9rem}
     .modal-box{padding:28px 20px}
 
     .fab{width:56px;height:56px;bottom:16px;right:16px}
@@ -895,9 +970,18 @@
     <div class="logo-mark" aria-hidden="true"><strong>A</strong><span>G</span></div>
 
     <h1>ALDI GROUP</h1>
-    <p class="lead">Kunjungi bisnis dan layanan kami, jual/beli barang, belanja di pasar online, atau lihat event terbaru yang sedang berlangsung.</p>
+    <p class="lead">Kunjungi bisnis dan layanan kami, jual/beli barang, belanja di pasar online, akses pendidikan, dukung pengembangan website, atau lihat event terbaru yang sedang berlangsung.</p>
 
     <div class="btn-group">
+      <!-- ===== TOMBOL PALING ATAS: Donasi ===== -->
+      <a href="https://companycom.github.io/donasi" target="_blank" rel="noopener noreferrer" class="btn-donasi">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+        <span>Donasi Pengembangan Website</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      </a>
+
       <a href="https://companycom.github.io/lobby.com" target="_blank" rel="noopener noreferrer" class="btn-visit">
         Kunjungi Bisnis Kami
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
@@ -913,7 +997,6 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
       </a>
 
-      <!-- ===== TOMBOL BARU: Toko Pasar Online ===== -->
       <a href="https://companycom.github.io/pasar.online" target="_blank" rel="noopener noreferrer" class="btn-pasar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 9l1-5h16l1 5"/>
@@ -922,6 +1005,16 @@
           <path d="M8 21V13h8v8"/>
         </svg>
         Toko Pasar Online
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      </a>
+
+      <a href="https://companycom.github.io/pendidikan" target="_blank" rel="noopener noreferrer" class="btn-edu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10 12 5 2 10l10 5 10-5Z"/>
+          <path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/>
+          <path d="M22 10v6"/>
+        </svg>
+        Akses Pendidikan
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
       </a>
 
@@ -1456,6 +1549,8 @@
       { k:/link storeme|storeme\.com/i, a:'<code>companycom.github.io/storeme.com</code> = <strong>toko online</strong> Aldi Group.' },
       { k:/link pasar|pasar\.online/i, a:'<code>companycom.github.io/pasar.online</code> = <strong>pasar online (marketplace)</strong> Aldi Group.' },
       { k:/link event|event\.co/i,    a:'<code>companycom.github.io/event.co</code> = <strong>halaman event</strong> resmi Aldi Group.' },
+      { k:/link pendidikan|pendidikan/i, a:'<code>companycom.github.io/pendidikan</code> = <strong>halaman akses pendidikan</strong> Aldi Group.' },
+      { k:/link donasi|donasi/i, a:'<code>companycom.github.io/donasi</code> = <strong>halaman donasi pengembangan website</strong> Aldi Group. Dukungan Anda sangat berarti untuk pengembangan fitur baru.' },
       { k:/tab baru/i,            a:'Supaya halaman Aldi Group tetap terbuka dan pelanggan bisa kembali dengan mudah.' },
       { k:/link aman/i,           a:'Aman — semua link mengarah ke domain resmi <code>github.io</code> milik Aldi Group.' },
       { k:/bagikan link|share/i,  a:'Copy URL dari tombol, lalu share lewat WhatsApp/sosmed. <strong>Jangan ubah karakter URL</strong>.' },
@@ -1517,6 +1612,13 @@
       { k:/info event terbaru/i,  a:'Pantau <code>event.co</code> dan sosial media resmi Aldi Group.' },
       { k:/usulkan tema/i,        a:'Boleh! Kirim ide ke admin event untuk dipertimbangkan.' },
 
+      // Pendidikan
+      { k:/akses pendidikan|link pendidikan/i, a:'Klik tombol <strong>Akses Pendidikan</strong> di halaman ini, atau buka <code>companycom.github.io/pendidikan</code>.' },
+      { k:/pendidikan/i, a:'Aldi Group menyediakan akses pendidikan lewat halaman <code>companycom.github.io/pendidikan</code>.' },
+
+      // Donasi
+      { k:/donasi|dukung|support/i, a:'Terima kasih! Donasi untuk pengembangan website bisa melalui tombol <strong>Donasi Pengembangan Website</strong>, atau langsung ke <code>companycom.github.io/donasi</code>. Dukungan Anda sangat berarti 🙏.' },
+
       // Akun
       { k:/cara daftar/i,         a:'Klik tombol <strong>DAFTAR</strong> di navbar, isi nama, email, password.' },
       { k:/^bagaimana cara login/i, a:'Klik <strong>MASUK</strong>, masukkan email & password yang terdaftar.' },
@@ -1544,6 +1646,8 @@
       if (/pasar/.test(lower)) return 'Pasar Online ada di <code>pasar.online</code>. Klik tombol <strong>Toko Pasar Online</strong>.';
       if (/toko|barang|jual|beli/.test(lower)) return 'Kunjungi toko kami di <code>storeme.com</code> lewat tombol <strong>Jual / Barang</strong>.';
       if (/event|acara|tiket/.test(lower)) return 'Info event ada di <code>event.co</code>. Klik tombol <strong>Lihat Event</strong>.';
+      if (/pendidikan|sekolah|belajar/.test(lower)) return 'Akses pendidikan ada di <code>companycom.github.io/pendidikan</code>. Klik tombol <strong>Akses Pendidikan</strong>.';
+      if (/donasi|dukung|support/.test(lower)) return 'Dukungan Anda sangat berarti! Donasi untuk pengembangan website bisa melalui tombol <strong>Donasi Pengembangan Website</strong>, atau langsung ke <code>companycom.github.io/donasi</code>.';
       if (/bisnis|layanan/.test(lower)) return 'Bisnis Aldi Group bisa diakses lewat tombol <strong>Kunjungi Bisnis Kami</strong> (lobby.com).';
       return 'Maaf, saya belum punya jawaban spesifik untuk itu. Coba pilih pertanyaan lain dari daftar 100, atau hubungi admin Aldi Group 🙏.';
     }
